@@ -53,7 +53,7 @@ export default function LoginTypesPage({ onSelectRole, onContact }) {
       minHeight: '100vh',
       position: 'relative',
       overflow: 'hidden',
-      fontFamily: "'Playfair Display', serif",
+      fontFamily: "'Inter', sans-serif",
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -128,9 +128,9 @@ export default function LoginTypesPage({ onSelectRole, onContact }) {
           margin: '0 0 56px',
           fontStyle: 'italic',
           letterSpacing: '-0.01em',
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: '',
         }}>
-          Welcome to <span className="logo-vitadata">VITADATA</span> <span className="logo-solutions">SOLUTIONS</span>
+          Welcome to VITADATA SOLUTIONS
         </h1>
 
         {/* ── Role cards ─────────────────────────────────────────────── */}
@@ -213,5 +213,3 @@ export default function LoginTypesPage({ onSelectRole, onContact }) {
     </div>
   );
 }
-
-

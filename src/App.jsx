@@ -15,7 +15,8 @@ import OtpVerificationPage from './components/OtpVerificationPage';
 import AdminDashboard from './components/AdminDashboard';
 import AccessDeniedPage from './components/AccessDeniedPage';
 import LoginTypesPage from './components/LoginTypesPage';
-
+import ResetPassword from './components/ResetPassword';
+import CreateAdminAccount from './components/AdminCreate';
 export default function App() {
   const [page, setPage] = useState("landing");
 
@@ -70,6 +71,9 @@ export default function App() {
     if (page === "subscription-inactive") {
       return <SubscriptionInactivePage onReturnToLogin={() => navigate("login")} />;
     }
+    if(page == "resetPassword"){
+      return <ResetPassword/> ;
+    }
 
     if (page === "doctor-login") {
       return <DoctorLoginPage onLogin={() => navigate("doctor")} onSignUp={() => navigate("signup")} onHome={() => navigate("landing")} />;
@@ -81,6 +85,9 @@ export default function App() {
 
     if (page === "admin") {
       return <AdminDashboard onLogout={() => navigate("landing")} />;
+    }
+    if (page === "adminC") {
+      return <CreateAdminAccount />;
     }
 
     if (page === "access-denied") {

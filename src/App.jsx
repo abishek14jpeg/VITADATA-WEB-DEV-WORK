@@ -17,17 +17,23 @@ import AccessDeniedPage from './components/AccessDeniedPage';
 import LoginTypesPage from './components/LoginTypesPage';
 
 export default function App() {
-  const [page, setPage] = useState("landing");
+  const [page, setPage] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("page") || "landing";
+  });
 
   // Push a history entry whenever we navigate to a new page
   const navigate = useCallback((newPage) => {
-    window.history.pushState({ page: newPage }, '');
+    const newUrl = newPage === "landing" ? window.location.pathname : `${window.location.pathname}?page=${newPage}`;
+    window.history.pushState({ page: newPage }, '', newUrl);
     setPage(newPage);
   }, []);
 
   // Replace the very first history entry so the landing page is always in the stack
   useEffect(() => {
-    window.history.replaceState({ page: "landing" }, '');
+    const params = new URLSearchParams(window.location.search);
+    const initialPage = params.get("page") || "landing";
+    window.history.replaceState({ page: initialPage }, '');
   }, []);
 
   // Sync the back/forward browser buttons with our page state

@@ -1,0 +1,22 @@
+node_modules/
+build/
+dist/
+.env
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Excluded pages - Main Login, SignUp, and Landing
+src/components/SignUpPage.jsx
+src/components/LoginPage.jsx
+src/components/Hero.jsx
+src/components/OtpVerificationPage.jsx
+src/components/Navbar.jsx
+src/components/Services.jsx
+src/components/Contact.jsx
+src/components/FAQ.jsx
+src/components/Footer.jsx
+node_modules

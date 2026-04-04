@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════
+   VITADATA — GLOBAL DESIGN SYSTEM (HSL ONLY)
+═══════════════════════════════════════════════ */
+
+:root {
+  /* ── HSL Color System — Warm Brown ── */
+  --primary: 28 45% 32%;
+  --primary-foreground: 0 0% 100%;
+  --primary-hover: 28 45% 26%;
+
+  --secondary: 30 35% 97%;
+  --secondary-foreground: 28 30% 15%;
+
+  --background: 0 0% 100%;
+  --foreground: 28 30% 15%;
+
+  --muted: 30 35% 97%;
+  --muted-foreground: 28 15% 45%;
+
+  --accent: 30 40% 94%;
+  --accent-foreground: 28 30% 15%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 28 30% 15%;
+
+  --border: 28 20% 80%;
+  --input: 30 40% 94%;
+  --input-focus: 28 35% 88%;
+  --ring: 28 45% 32%;
+
+  /* ── Typography ── */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Playfair Display', serif;
+
+  /* ── Spacing system (8pt grid) ── */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 128px;
+
+  /* ── Transitions ── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: hsl(28 45% 32% / 0.2);
+    color: hsl(var(--foreground));
+  }
+
+  img, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  ul, ol {
+    list-style: none;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: hsl(var(--foreground));
+  }
+
+  p, span, li, label, input, textarea, select, button {
+    font-family: var(--font-body);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(var(--muted)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--primary)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary-hover)); }
+
+/* ═══════════════════════════════════════════════
+   VITADATA — CUSTOM ANIMATIONS & HOVER EFFECTS
+═══════════════════════════════════════════════ */
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0; /* start hidden */
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s ease-in-out infinite;
+}
+
+/* Animation Delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Global Hover Effects */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease !important;
+}
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 12px 32px rgba(217,119,87,0.15) !important;
+}
+
+.hover-glow {
+  transition: all 0.3s ease !important;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(217,119,87,0.4) !important;
+  border-color: #D97757 !important;
+}
+
+
+
+
+.logo-vitadata { font-family: 'Montserrat', sans-serif !important; }
+.logo-solutions { font-family: 'Mulish', sans-serif !important; font-weight: 600; }
+
+
+
+/* Logo Fonts */
+.montserrat-font {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 700;
+}
+
+
+
+
+

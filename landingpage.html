@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitaData — Healthcare Management Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background: #2F170B; color: #2F170B; overflow-x: hidden; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Navbar */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: rgba(47,23,11,0.92); backdrop-filter: blur(18px); padding: 0 48px; }
+        nav ul { max-width: 1280px; margin: 0 auto; height: 68px; display: flex; align-items: center; gap: 28px; }
+        nav ul li a { font-size: 12px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(221,200,190,0.8); transition: color 0.25s; }
+        nav ul li a:hover { color: #EC8E60; }
+        nav ul li:last-child a { background: #894E2F; color: #FBEEEA; padding: 9px 22px; border-radius: 30px; }
+        nav ul li:last-child a:hover { background: #BB6C43; }
+
+        /* Hero */
+        .hero { min-height: 100vh; background: #FBEEEA; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; }
+        .hero h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1.06; color: #2F170B; margin-bottom: 24px; }
+        .hero p { font-size: 17px; color: rgba(47,23,11,0.6); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+        .hero .buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .cta-button { background: rgba(90,49,28,0.1); border: none; border-radius: 35px; padding: 14px 30px; font-family: inherit; font-weight: 700; font-size: 16px; color: #623222; cursor: pointer; transition: background 0.25s; }
+        .cta-button:hover { background: rgba(90,49,28,0.18); }
+
+        /* About */
+        .about { background: #5A311C; padding: 96px 24px; border-radius: 20px; margin: 16px 10px; text-align: center; }
+        .about h2 { font-size: clamp(32px, 4vw, 48px); color: #EC8E60; margin-bottom: 28px; }
+        .about p { font-size: clamp(15px, 1.6vw, 19px); color: #F2C2B2; max-width: 960px; margin: 0 auto; line-height: 1.75; opacity: 0.9; }
+
+        /* Services */
+        .services { background: #FBEEEA; padding: 96px 24px; text-align: center; }
+        .services h2 { font-size: clamp(32px, 4vw, 48px); color: #2F170B; margin-bottom: 52px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; max-width: 1100px; margin: 0 auto; }
+        .svc-card { background: rgba(187,108,67,0.1); border: 1px solid rgba(187,108,67,0.2); border-radius: 18px; padding: 32px 24px; text-align: left; transition: background 0.3s, transform 0.3s; }
+        .svc-card:hover { background: rgba(187,108,67,0.2); transform: translateY(-6px); }
+        .svc-card .icon { width: 44px; height: 44px; border: 2px solid #2F170B; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 18px; }
+        .svc-card h3 { font-size: 16px; color: #2F170B; margin-bottom: 8px; }
+        .svc-card p { font-size: 13px; color: rgba(47,23,11,0.55); line-height: 1.65; }
+
+        /* Contact */
+        .contact { background: #FBEEEA; padding: 96px 24px; }
+        .contact-inner { max-width: 600px; margin: 0 auto; }
+        .contact h2 { font-size: clamp(28px, 3.5vw, 40px); text-transform: uppercase; letter-spacing: 2px; color: #5A311C; margin-bottom: 32px; text-align: center; }
+        .contact form { display: flex; flex-direction: column; gap: 14px; }
+        .contact input, .contact textarea { background: #5A311C; border: none; border-radius: 40px; padding: 16px 28px; font-family: inherit; font-size: 14px; color: #fff; outline: none; }
+        .contact textarea { border-radius: 20px; min-height: 120px; resize: none; }
+        .contact input::placeholder, .contact textarea::placeholder { color: rgba(255,255,255,0.4); }
+        .contact .check-row { display: flex; align-items: center; gap: 10px; }
+        .contact .check-row label { font-size: 12px; color: rgba(47,23,11,0.5); }
+        .contact button[type="submit"] { background: #5A311C; color: #fff; border: none; border-radius: 40px; padding: 14px 44px; font-family: inherit; font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background 0.25s; align-self: flex-start; }
+        .contact button[type="submit"]:hover { background: #894E2F; }
+
+        /* Founders */
+        .founders { background: #2F170B; padding: 96px 24px; text-align: center; }
+        .founders h2 { font-size: clamp(28px, 4vw, 48px); letter-spacing: 4px; text-transform: uppercase; color: #F2C2B2; margin-bottom: 48px; }
+        .founders-grid { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
+        .founder-card { background: linear-gradient(145deg, #5A3927, #8B4421); border-radius: 18px; overflow: hidden; width: 360px; text-align: center; padding-bottom: 28px; }
+        .founder-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 32px auto 16px; border: 3px solid rgba(242,194,178,0.3); }
+        .founder-card h3 { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; color: #F2C2B2; margin-bottom: 12px; }
+        .founder-card a { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.7); margin: 4px 0; }
+        .founder-card a:hover { color: #EC8E60; }
+        .founder-card p.phone { font-size: 12px; color: rgba(255,255,255,0.6); }
+        .founders .tagline { font-style: italic; font-size: 14px; color: rgba(255,255,255,0.22); margin-top: 48px; letter-spacing: 1.5px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#founders">Meet the Founders</a></li>
+            <li><a href="#contact">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div>
+            <h2>Redefining Excellence In<br>Healthcare Delivery</h2>
+            <p>Get along the trusted management of VitaData for your medical needs. Your health is now in safe hands.</p>
+            <div class="buttons">
+                <button class="cta-button">Get Started</button>
+                <button class="cta-button">Download App</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>VitaData delivers an integrated hospital management and patient engagement platform designed to simplify healthcare operations and enhance care delivery. Our system enables secure role-based access, smart appointment scheduling, digital prescriptions, centralized medical records with OTP-based cross-hospital access, lab management, automated follow-ups, and cloud-based storage. Powered by AI-driven analytics, risk assessment, and a patient mobile app, VitaData creates a unified healthcare ecosystem.</p>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="svc-card">
+                <div class="icon">+</div>
+                <h3>Doctors Portal</h3>
+                <p>Comprehensive portal for medical professionals to manage patients, prescriptions, and appointments.</p>
+            </div>
+            <div class="svc-card">
+                <div class="icon">+</div>
+                <h3>Laboratory Suite</h3>
+                <p>End-to-end lab management with automated result delivery, sample tracking, and report integration.</p>
+            </div>
+            <div class="svc-card">
+                <div class="icon">+</div>
+                <h3>E-Pharmacy</h3>
+                <p>Digital pharmacy integration with prescription verification, medication tracking, and delivery coordination.</p>
+            </div>
+            <div class="svc-card">
+                <div class="icon">+</div>
+                <h3>Hospital Administration</h3>
+                <p>Centralized control panel for hospital operations, staff management, and resource allocation.</p>
+            </div>
+            <div class="svc-card">
+                <div class="icon">+</div>
+                <h3>Reception Hub</h3>
+                <p>Smart front-desk management for seamless patient check-in, queue handling, and appointment coordination.</p>
+            </div>
+            <div class="svc-card">
+                <div class="icon">+</div>
+                <h3>Patient Appointment App</h3>
+                <p>Mobile-first scheduling with automated reminders, follow-ups, and health records access.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-inner">
+            <h2>Get In Touch</h2>
+            <form>
+                <input type="text" name="name" required placeholder="Enter your name">
+                <input type="email" name="email" required placeholder="Enter your email address">
+                <textarea name="message" required placeholder="Enter your message"></textarea>
+                <div class="check-row">
+                    <input type="checkbox" id="tos">
+                    <label for="tos">I accept the terms of service</label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="founders" class="founders">
+        <h2>Meet the Founders</h2>
+        <div class="founders-grid">
+            <div class="founder-card">
+                <img src="shivcharan bro photo.png" alt="Shivacharan Ambati">
+                <h3>Shivacharan Ambati</h3>
+                <a href="mailto:shivacharangoud.ambati@gmail.com">shivacharangoud.ambati@gmail.com</a>
+                <p class="phone">9652526037</p>
+            </div>
+            <div class="founder-card">
+                <img src="jayaditya valishetty bro photo .png" alt="Jayaditya Valishetty">
+                <h3>Jayaditya Valishetty</h3>
+                <a href="mailto:jayaditya.varma@gmail.com">jayaditya.varma@gmail.com</a>
+                <p class="phone">8688176287</p>
+            </div>
+        </div>
+        <p class="tagline">Our specialists are our pride</p>
+    </section>
+</body>
+</html>
+

@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git commit -m \"Remove remaining landing page components from git tracking\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

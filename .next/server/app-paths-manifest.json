@@ -1,7 +1,0 @@
-{
-  "/about/page": "app/about/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/doctor/page": "app/doctor/page.js",
-  "/subscription-inactive/page": "app/subscription-inactive/page.js",
-  "/access-denied/page": "app/access-denied/page.js"
-}

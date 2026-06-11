@@ -20,3 +20,4 @@ src/components/Contact.jsx
 src/components/FAQ.jsx
 src/components/Footer.jsx
 node_modules
+.next/

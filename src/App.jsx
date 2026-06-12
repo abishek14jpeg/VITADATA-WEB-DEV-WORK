@@ -20,27 +20,27 @@ import CreateAdminAccount from './components/AdminCreate';
 export default function App() {
   const [page, setPage] = useState(() => {
     const params = new URLSearchParams(window.location.search);
-    return params.get("page") || "landing";
+    return params.get("page") || "login-types";
   });
 
   // Push a history entry whenever we navigate to a new page
   const navigate = useCallback((newPage) => {
-    const newUrl = newPage === "landing" ? window.location.pathname : `${window.location.pathname}?page=${newPage}`;
+    const newUrl = newPage === "login-types" ? window.location.pathname : `${window.location.pathname}?page=${newPage}`;
     window.history.pushState({ page: newPage }, '', newUrl);
     setPage(newPage);
   }, []);
 
-  // Replace the very first history entry so the landing page is always in the stack
+  // Replace the very first history entry so the login-types page is always in the stack
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const initialPage = params.get("page") || "landing";
+    const initialPage = params.get("page") || "login-types";
     window.history.replaceState({ page: initialPage }, '');
   }, []);
 
   // Sync the back/forward browser buttons with our page state
   useEffect(() => {
     const handlePop = (e) => {
-      const p = e.state?.page ?? "landing";
+      const p = e.state?.page ?? "login-types";
       setPage(p);
     };
     window.addEventListener('popstate', handlePop);
@@ -52,13 +52,13 @@ export default function App() {
       return (
         <PatientPage
           onNavigate={(label) => { if (label === "Dashboard") navigate("doctor"); }}
-          onLogout={() => navigate("landing")}
+          onLogout={() => navigate("login-types")}
         />
       );
     }
 
     if (page === "doctor") {
-      return <DoctorDashboard onLogout={() => navigate("landing")} onPatients={() => navigate("patient")} />;
+      return <DoctorDashboard onLogout={() => navigate("login-types")} onPatients={() => navigate("patient")} />;
     }
 
     if (page === "login") {
@@ -66,10 +66,10 @@ export default function App() {
         <LoginPage
           onLogin={(role) => {
             if (role === "DOCTOR") navigate("doctor");
-            else navigate("landing");
+            else navigate("login-types");
           }}
           onSignUp={() => navigate("signup")}
-          onHome={() => navigate("landing")}
+          onHome={() => navigate("login-types")}
         />
       );
     }
@@ -82,33 +82,33 @@ export default function App() {
     }
 
     if (page === "doctor-login") {
-      return <DoctorLoginPage onLogin={() => navigate("doctor")} onSignUp={() => navigate("signup")} onHome={() => navigate("landing")} />;
+      return <DoctorLoginPage onLogin={() => navigate("doctor")} onSignUp={() => navigate("signup")} onHome={() => navigate("login-types")} />;
     }
 
     if (page === "otp") {
-      return <OtpVerificationPage onVerify={() => navigate("doctor")} onBack={() => navigate("login")} onHome={() => navigate("landing")} />;
+      return <OtpVerificationPage onVerify={() => navigate("doctor")} onBack={() => navigate("login")} onHome={() => navigate("login-types")} />;
     }
 
     if (page === "admin") {
-      return <AdminDashboard onLogout={() => navigate("landing")} />;
+      return <AdminDashboard onLogout={() => navigate("login-types")} />;
     }
     if (page === "adminC") {
       return <CreateAdminAccount />;
     }
 
     if (page === "access-denied") {
-      return <AccessDeniedPage onReturn={() => navigate("landing")} onLogin={() => navigate("login")} />;
+      return <AccessDeniedPage onReturn={() => navigate("login-types")} onLogin={() => navigate("login")} />;
     }
 
     if (page === "login-types") {
-      return <LoginTypesPage onSelectRole={(rolePage) => navigate(rolePage)} onContact={() => navigate("landing")} />;
+      return <LoginTypesPage onSelectRole={(rolePage) => navigate(rolePage)} onContact={() => navigate("login-types")} />;
     }
 
     if (page === "signup") {
       return (
         <SignUpPage
           onLogin={() => navigate("login")}
-          onHome={() => navigate("landing")}
+          onHome={() => navigate("login-types")}
         />
       );
     }

@@ -126,7 +126,6 @@ export default function LoginTypesPage({ onSelectRole, onContact }) {
           fontWeight: 700,
           color: '#D97757',
           margin: '0 0 56px',
-          fontStyle: 'italic',
           letterSpacing: '-0.01em',
           fontFamily: '',
         }}>
